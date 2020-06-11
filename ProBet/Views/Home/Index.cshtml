@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4" style="font-weight:bolder">Welcome to ProBet</h1>
+        <h3 style="color:darkorange">What do you want to do?</h3>
+        <br/>
+        <!--<anime><img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQmuzIlo2pAYnsJgSx0VlkO4IJ8776q2SjCr3B0IR_KhWt51fXK&usqp=CAU"/></anime>-->
+        <a asp-controller="Matches" asp-action="Index"><img src="https://previews.123rf.com/images/tatianasun/tatianasun1803/tatianasun180300154/97483203-hand-hold-pencil-icon-hand-writing-icon-vector-color-illustration-.jpg" style="width: 300px; height: 300px; border: solid; border-color: orange;" class="rounded-circle" /></a><span class="carousel-caption text-left" style="color: white; font-size: 50px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bet</span>
+        <a asp-controller="Matches" asp-action="Scores"><img src="https://previews.123rf.com/images/jemastock/jemastock1812/jemastock181202102/127132839-stadistics-table-icon-color-in-white-background-vector-illustration-graphic-design.jpg" style="width: 300px; height: 300px; border: solid; border-color: orange;" class="rounded-circle" /></a><span class="carousel-caption" style="color: white; font-size: 50px">Scores</span>
+        <a asp-controller="Gamblers" asp-action="TopFive"><img src="https://cdn1.iconfinder.com/data/icons/color-statistics-1/433492/02-512.png" style="width: 300px; height: 300px; border: solid; border-color: orange; background-color: white;" class="rounded-circle" /></a><span class="carousel-caption text-right" style="color: white; font-size: 50px">See Top Five</span>
+    </div>

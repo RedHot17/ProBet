@@ -1,0 +1,59 @@
+﻿@model ProBet.Models.Match
+@{
+    ViewData["Title"] = "InsertScore";
+}
+<div style="position: fixed; top: 20%; left: 35%; text-align: center">
+    <div class="col-md-4" style="text-align: center;">
+        <form asp-action="InsertScore" style="text-align: center">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group" hidden>
+                <label asp-for="HomeTeam" class="control-label"></label>
+                <input asp-for="HomeTeam" class="form-control" />
+                <span asp-validation-for="HomeTeam" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="AwayTeam" class="control-label"></label>
+                <input asp-for="AwayTeam" class="form-control" />
+                <span asp-validation-for="AwayTeam" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="HomeOdds" class="control-label"></label>
+                <input asp-for="HomeOdds" class="form-control" />
+                <span asp-validation-for="HomeOdds" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="DrawOdds" class="control-label"></label>
+                <input asp-for="DrawOdds" class="form-control" />
+                <span asp-validation-for="DrawOdds" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="AwayOdds" class="control-label"></label>
+                <input asp-for="AwayOdds" class="form-control" />
+                <span asp-validation-for="AwayOdds" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <label class="control-label" style="text-align: center; font-family: 'Engravers MT'; font-size: 40px; color: gold;">@Html.DisplayFor(model=>model.HomeTeam)</label>
+                <input asp-for="HomeGoals" class="form-control" style="width: 260px; height:100px; text-align: center; font-size: 70px"/>
+                <span asp-validation-for="HomeGoals" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <label class="control-label" style="text-align: center; font-family: 'Engravers MT'; font-size: 40px; color: gold;">@Html.DisplayFor(model => model.AwayTeam)</label>
+                <input asp-for="AwayGoals" class="form-control" style="width: 260px; height:100px; text-align: center; font-size: 70px;"/>
+                <span asp-validation-for="AwayGoals" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align: center">
+                <input type="submit" value="Insert Score" class="btn btn-primary" style="width: 260px; height:60px; text-align: center;"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

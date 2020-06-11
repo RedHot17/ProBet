@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ProBet.Models.Match>
+@{
+    ViewData["Title"] = "Scores";
+}
+
+<h1 style="text-align:center; font-family:Elephant">Scores</h1>
+
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomeTeam)
+            </th>
+            <th>
+                Score
+            </th>
+            <th style="border-right: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.AwayTeam)
+            </th>
+            <th style="border-right: solid; border-left:solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.HomeOdds)
+            </th>
+            <th style="border-right: solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.DrawOdds)
+            </th>
+            <th style="border-right: solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.AwayOdds)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td style="border-right: solid">
+                @Html.DisplayFor(modelItem => item.HomeTeam)
+            </td>
+            <td style="border-right: solid; border-bottom: solid">
+                @Html.DisplayFor(modelItem => item.HomeGoals) : @Html.DisplayFor(modelItem => item.AwayGoals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AwayTeam)
+            </td>
+            @if (item.HomeGoals > item.AwayGoals)
+            {
+                <td style="border-right: solid; border-bottom: solid;border-left:solid; text-align: center; background-color: lightgreen">
+                    @item.HomeOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center">
+                    @item.DrawOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center;">
+                    @item.AwayOdds.ToString("0.00")
+                </td>
+            }
+            else if (item.HomeGoals < item.AwayGoals)
+            {
+                <td style="border-right: solid; border-bottom: solid;border-left:solid; text-align: center;">
+                    @item.HomeOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center">
+                    @item.DrawOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center; background-color: lightgreen">
+                    @item.AwayOdds.ToString("0.00")
+                </td>
+            }
+            else
+            {
+                <td style="border-right: solid; border-bottom: solid;border-left:solid; text-align: center;">
+                    @item.HomeOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center; background-color: orangered">
+                    @item.DrawOdds.ToString("0.00")
+                </td>
+                <td style="        border-right: solid;
+        border-bottom: solid; text-align: center;">
+                    @item.AwayOdds.ToString("0.00")
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
