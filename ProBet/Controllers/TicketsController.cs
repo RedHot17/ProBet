@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProBet.Data;
 using ProBet.Models;
 
 namespace ProBet.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TicketsController : Controller
     {
         private readonly ProBetContext _context;

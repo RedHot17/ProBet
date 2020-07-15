@@ -1,0 +1,31 @@
+﻿@model ProBet.Models.Ticket
+@{
+    ViewData["Title"] = "BetAwayTeam";
+}
+
+<h1>BetAwayTeam</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BetAwayTeam">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BetMoney" class="control-label"></label>
+                <input asp-for="BetMoney" class="form-control" />
+                <span asp-validation-for="BetMoney" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Bet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

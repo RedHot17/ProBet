@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProBet.Models.Match>
+@{
+    ViewData["Title"] = "Matches";
+}
+
+<h1 style="text-align:center; font-family:Elephant">Matches</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th style="border-right: solid">
+                @Html.DisplayNameFor(model => model.HomeTeam)
+            </th>
+            <th style="border-right: solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.HomeOdds)
+            </th>
+            <th style="border-right: solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.DrawOdds)
+            </th>
+            <th style="border-right: solid; border-bottom: solid; text-align: center">
+                @Html.DisplayNameFor(model => model.AwayOdds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AwayTeam)
+            </th>
+            <th></th>
+            <th> </th>
+            <th>@Html.DisplayNameFor(model=>model.Stadium)</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td style="border-right: solid">
+                @Html.DisplayFor(modelItem => item.HomeTeam)
+            </td>
+            <td style="border-right: solid; border-bottom: solid; text-align: center">
+                <a asp-controller="Gambler" asp-action="BetHomeTeam" asp-route-id="@item.Id">@item.HomeOdds.ToString("0.00")</a>
+            </td>
+            <td style="        border-right: solid;
+        border-bottom: solid; text-align: center">
+                <a asp-controller="Gambler" asp-action="BetDraw" asp-route-id="@item.Id">@item.DrawOdds.ToString("0.00")</a>
+            </td>
+            <td style="        border-right: solid;
+        border-bottom: solid; text-align: center;">
+                <a asp-controller="Gambler" asp-action="BetAwayTeam" asp-route-id="@item.Id">@item.AwayOdds.ToString("0.00")</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AwayTeam)
+            </td>
+            <td></td>
+            <td></td>
+            <td>@Html.DisplayFor(modelItem => item.Stadium)</td>
+        </tr>
+}
+    </tbody>
+</table>

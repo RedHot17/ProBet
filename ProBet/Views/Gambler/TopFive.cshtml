@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProBet.Models.Gambler>
+@{
+    ViewData["Title"] = "ProBet Top Five";
+}
+@{
+    int v = 1;
+ }
+<h1 style="text-align: center; font-family: Elephant; font-size:80px">ProBet's Top 5</h1>
+<hr/>
+<table class="table text-center" style="font-family: Ebrima;font-size: x-large">
+    <thead style="font-weight: bolder">
+        <tr>
+            <th>
+                Rank
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Earnings)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @v
+                    @{v++;}
+                </td>
+                <td>
+                    <a asp-controller="Gambler" asp-action="GamblerHome" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.FullName)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Earnings)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

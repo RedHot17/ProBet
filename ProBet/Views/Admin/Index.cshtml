@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AppUser>
+
+@{
+    ViewData["Title"] = "All Users";
+}
+
+    <h1 style="text-align:center; font-family:Elephant">All Users</h1>
+<br />
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>User Id</th>
+        <th>Email address</th>
+        <th>Role</th>
+        <th>Gambler Id</th>
+        <th></th>
+    </tr>
+    @foreach (AppUser user in Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            @{
+                if (user.GamblerId != null)
+                {
+                    <td>@(user.GamblerId)</td>
+                }
+                else
+                {
+                    <td>/</td>
+                }
+            }
+            <td>
+                @{
+                    if (user.GamblerId != null)
+                    {
+                        <a asp-controller="Admin" asp-action="GamblerProfile" asp-route-gamblerId="@user.GamblerId">Change</a>
+                    }
+                }
+                |
+                @{
+                    if (user.GamblerId != null)
+                    {
+                        <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('The user @(user.Id) will be deleted!?');"> Delete </button>
+                        </form>
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<h3><a asp-controller="Admin" asp-action="GamblerProfile">Create New User</a></h3>
+

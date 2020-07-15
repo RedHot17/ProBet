@@ -1,0 +1,46 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "Gambler user profile";
+}
+
+<h2>@(Model != null && Model.GamblerId != null ? "Change" : "New") user profile</h2>
+<h4>Gambler: @ViewData["FullName"]</h4>
+<hr />
+<div class="row">
+    <form asp-action="GamblerProfile" method="post">
+        <div class="col-md-14">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label for="GamblerId">Gambler Id</label>
+                <input name="GamblerId" class="form-control" value="@(Model != null ? Model.GamblerId : @ViewData["GamblerId"])" />
+            </div>
+            <div class="form-group">
+                <label for="Id">User Id</label>
+                <input asp-for="Id" class="form-control"/>
+            </div>
+            <div class="form-group" hidden>
+                <label for="PasswordHash">Hashed password</label>
+                <input asp-for="PasswordHash" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label for="Email">Email address</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Password">Password</label>
+                <input name="Password" class="form-control" />
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="@(Model != null && Model.GamblerId != null ? "Save" : "Insert new")" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-controller="Gamblers" asp-action="Index">Back to gamblers</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

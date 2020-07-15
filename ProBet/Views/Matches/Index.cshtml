@@ -14,7 +14,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.StartTime)
             </th>
-            <th style="border-right: solid">
+            <th style="border-right: solid; text-align: right">
                 @Html.DisplayNameFor(model => model.HomeTeam)
             </th>
             <th style="border-right: solid; border-bottom: solid; text-align: center">
@@ -29,12 +29,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.AwayTeam)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HomeGoals)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AwayGoals)
-            </th>
+            <td>&nbsp;&nbsp;</td>
             <th></th>
         </tr>
     </thead>
@@ -45,32 +40,26 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StartTime)
             </td>
-            <td style="border-right: solid">
+            <td style="border-right: solid; text-align:right">
                 @Html.DisplayFor(modelItem => item.HomeTeam)
             </td>
             <td style="border-right: solid; border-bottom: solid; text-align: center">
-                <a asp-controller="Tickets" asp-action="BetHomeTeam" asp-route-id="@item.Id">@item.HomeOdds.ToString("0.00")</a>
+                    @item.HomeOdds.ToString("0.00")
             </td>
             <td style="        border-right: solid;
         border-bottom: solid; text-align: center">
-                <a asp-controller="Tickets" asp-action="BetDraw" asp-route-id="@item.Id">@item.DrawOdds.ToString("0.00")</a>
+                @item.DrawOdds.ToString("0.00")
             </td>
             <td style="        border-right: solid;
         border-bottom: solid; text-align: center;">
-                <a asp-controller="Tickets" asp-action="BetAwayTeam" asp-route-id="@item.Id">@item.AwayOdds.ToString("0.00")</a>
+                @item.AwayOdds.ToString("0.00")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AwayTeam)
             </td>
+            <td>&nbsp;&nbsp;</td>
             <td>
-                @Html.DisplayFor(modelItem => item.HomeGoals)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AwayGoals)
-            </td>
-            <td>
-                <a asp-controller="Matches" asp-action="InsertScore" asp-route-id="@item.Id">Insert Score</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-controller="Matches" asp-action="InsertScore" asp-route-id="@item.Id">Insert Score</a>
             </td>
         </tr>
 }

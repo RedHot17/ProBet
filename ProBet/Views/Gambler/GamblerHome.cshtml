@@ -1,0 +1,62 @@
+﻿@model ProBet.Models.Gambler
+@{
+    ViewData["Title"] = "GamblerHome";
+}
+<img src="~/images/@Html.DisplayFor(model => model.CoverPhoto)" style=" position: relative; height: 250px; width: 100%; z-index:0" />
+<img src="~/images/@Html.DisplayFor(model => model.ProfilePicture)"
+     class="rounded-circle"
+     height="250" width="250" style="position: absolute; left: 10%; top: 15%; z-index: 1; border: solid; border-color: darkorange;" />
+<h1 style="font-family: 'Goudy Old Style'; font-size: 80px;font-weight:bold; color: darkorange; position: relative; z-index: 2">@Html.DisplayFor(model => model.FullName)<p style="float: right; font-size: 80px;font-weight:bold; color: forestgreen;">$@Html.DisplayFor(model=>model.Earnings)</p></h1>
+<h3 style="font-family: 'Goudy Old Style'; font-size: 50px; font-weight:bold; color: skyblue; position: relative;">@Html.DisplayFor(model=>model.Nationality)</h3>
+<br />
+@foreach (var ticket in Model.Tickets)
+{
+    <table style="float: left; font-family: 'Trebuchet MS'; color: black; background-color: white; border: solid; text-align: center" class="table-borderless text-center">
+           <thead>
+               <tr style="border-bottom: solid">
+                   <th></th>
+                   <th style="text-align:left; color: orange; font-family: 'Lucida Handwriting'; font-weight: 900">ProBet</th>
+                   <th></th>
+                   @if(ticket.Won==1){ <th style="color:green">&#10004</th> }
+                   else if (ticket.Won == 2) { <th style="color:red">&#215</th>}
+                   else { <th style="color:yellow">&#8226</th>}
+               </tr>
+               <tr>
+                   <th style="color:black; border-right:solid">@Html.DisplayFor(modelItem => ticket.BetTime)</th>
+                   <th style="color:black">Match</th>
+                   <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                   <th style="color:black">Tip</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr style="border-bottom: solid">
+                   <th></th>
+                   <th style="color:black; border-left:solid; border-top:solid">@Html.DisplayFor(modelItem => ticket.Match.HomeTeam) &nbsp; - &nbsp; @Html.DisplayFor(modelItem => ticket.Match.AwayTeam)</th>
+                   <th style="color:black; border-top:solid"></th>
+                       @if (ticket.Tip == 0)
+                       {
+                       <th style="color:black;border-top:solid">X</th>
+                       }
+                       else
+                       {
+                       <th style="color:black;border-top:solid">  @Html.DisplayFor(modelItem => ticket.Tip)</th>
+                       }
+                   </tr>
+               <tr>
+                   <th style="text-align: left; color:black;">Bet Money:</th>
+                   <th></th>
+                   <th></th>
+                   <th style="color:green">$@Html.DisplayFor(modelItem => ticket.BetMoney)</th>
+               </tr>
+               <tr>
+                   <th style="text-align: left; color:black">Win Money:</th>
+                   <th></th>
+                   <th></th>
+                   <th style="color:green">$@Html.DisplayFor(modelItem => ticket.WinMoney)</th>
+               </tr>
+           </tbody>
+    </table>
+    <br/>
+}
+
+

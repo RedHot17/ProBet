@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ProBet.Data;
 using ProBet.Models;
 using ProBet.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProBet.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GamblersController : Controller
     {
         private readonly ProBetContext _context;
